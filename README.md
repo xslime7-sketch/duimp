@@ -272,31 +272,28 @@ These are the problems I ran into while building, what I tried and what worked.
 
 
 
-### 5. A forced thunderstorm still said "light rain"
+### 4. A forced thunderstorm still said "light rain"
 
 **What happened:** after forcing `weer = "THUNDERSTORM";`, the strip turned purple, but the Serial Monitor still showed the real description.
 
 **Cause:** I only overwrote the weather type, not the description.
 
-**Solution:** none needed – this is expected. Just remove the test line afterwards.
+**Solution:** this is expected. Just remove the test line afterwards.
 
 **Other things to watch out for:**
 
 | Problem | Cause | Solution |
 | --- | --- | --- |
-| The bot doesn't react to "Avond" | Telegram starts messages with a capital letter | `text.toLowerCase()` before comparing |
 | Endless dots, no "WiFi verbonden" | 5 GHz network or wrong password | Use 2.4 GHz (on iPhone: hotspot → *Maximise compatibility*) |
 | Strange characters in the Serial Monitor | Wrong baud rate | 115200 baud |
-| "Kon het weer niet ophalen" | API key missing or not active yet | Check `OWM_KEY`; new keys can take a while |
-| Wrong colours (red shows as green) | Wrong colour order for your strip | Try `NEO_RGB` instead of `NEO_GRB` |
-| Code doesn't start after adding the button | Button on D3, D4 or D8 | Use D2 |
+| Unable to get weather | API key missing or not active yet | Check `OWM_KEY`; new keys can take a while |
 | The bot reacts slowly while blinking | `delay()` in the pulse blocks the bot | Keep pulses short (under 1 s) |
 
 ---
 
 ## How the code is organised
 
-**Goal:** find your way in the full code quickly – which function does what, how data moves through the sketch, and which values you can safely change.
+**Goal:** find your way in the full code quickly, which function does what, how data moves through the sketch, and which values you can safely change.
 
 ### How data moves through the sketch
 
